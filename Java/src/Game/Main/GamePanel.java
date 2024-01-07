@@ -50,32 +50,32 @@ public class GamePanel extends JPanel implements Runnable {
 
     addMouseListener(towerPlacement);
 
-    hpLabel = new JLabel("HP : " + Player.getLife());
+    hpLabel = new JLabel("Vie : " + Player.getLife());
     hpLabel.setFont(new Font("Arial", Font.BOLD, 40));
     hpLabel.setForeground(Color.GREEN);
     hpLabel.setAlignmentX(CENTER_ALIGNMENT);
 
-    goldLabel = new JLabel("Gold : " + Player.getGold());
+    goldLabel = new JLabel("Argent : " + Player.getGold());
     goldLabel.setFont(new Font("Arial", Font.BOLD, 40));
     goldLabel.setForeground(Color.YELLOW);
     goldLabel.setAlignmentX(CENTER_ALIGNMENT);
 
-    scoreLabel = new JLabel("Your score : " + Player.getScore());
+    scoreLabel = new JLabel("Score : " + Player.getScore());
     scoreLabel.setFont(new Font("Arial", Font.BOLD, 40));
     scoreLabel.setForeground(Color.RED);
     scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
 
-    waveLabel = new JLabel("Wave : " + WaveManager.getWaveIndex());
+    waveLabel = new JLabel("Vague : " + WaveManager.getWaveIndex());
     waveLabel.setFont(new Font("Arial", Font.BOLD, 40));
     waveLabel.setForeground(Color.BLUE);
     waveLabel.setAlignmentX(CENTER_ALIGNMENT);
 
     add(hpLabel);
-    add(Box.createRigidArea(new Dimension(20, 0)));
+    add(Box.createRigidArea(new Dimension(10, 0)));
     add(goldLabel);
-    add(Box.createRigidArea(new Dimension(20, 0)));
+    add(Box.createRigidArea(new Dimension(10, 0)));
     add(scoreLabel);
-    add(Box.createRigidArea(new Dimension(20, 0)));
+    add(Box.createRigidArea(new Dimension(10, 0)));
     add(waveLabel);
   }
 
@@ -134,13 +134,13 @@ public class GamePanel extends JPanel implements Runnable {
     if (
       this.hpLabel != null && this.goldLabel != null && this.scoreLabel != null
     ) {
-      this.hpLabel.setText("HP : " + Player.getLife());
+      this.hpLabel.setText("Vie : " + Player.getLife());
       this.hpLabel.repaint();
-      this.goldLabel.setText("Gold : " + Player.getGold());
+      this.goldLabel.setText("Argent : " + Player.getGold());
       this.goldLabel.repaint();
-      this.scoreLabel.setText("Your score : " + Player.getScore());
+      this.scoreLabel.setText("Score : " + Player.getScore());
       this.scoreLabel.repaint();
-      this.waveLabel.setText("Wave : " + WaveManager.getWaveIndex());
+      this.waveLabel.setText("Vague : " + WaveManager.getWaveIndex());
       this.waveLabel.repaint();
     }
   }

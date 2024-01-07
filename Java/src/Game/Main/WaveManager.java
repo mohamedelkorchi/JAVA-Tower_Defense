@@ -45,15 +45,15 @@ public void init() {
 
     this.waves = new ArrayList<List<Enemy>>();
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         List<Enemy> wave = new ArrayList<>();
         int numberOfEnemiesInWave = 3;
 
         for (int j = 0; j < numberOfEnemiesInWave; j++) {
             Enemy enemy;
-            if (i % 3 == 0) {
+            if (i % 2 == 0) {
                 enemy = new Slow(getRandomRoute());
-            } else if (i % 3 == 1) {
+            } else if (i % 2 == 1) {
                 enemy = new Fast(getRandomRoute());
             } else {
                 enemy = new Air(getRandomRoute());

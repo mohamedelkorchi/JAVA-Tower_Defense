@@ -20,7 +20,7 @@ public class GraphicsRenderer {
           draw(g, map[i][j]);
         }
       }
-    }
+      }
   }
 
   public static void draw(Graphics g, AUnit u) {
@@ -42,9 +42,9 @@ public class GraphicsRenderer {
     int barHeight = 5;
     int barX = x;
     int barY = y - barHeight - 2;
-    g.setColor(Color.RED);
+    g.setColor(Color.BLACK);
     g.fillRect(barX, barY, barWidth, barHeight);
-    g.setColor(Color.GREEN);
+    g.setColor(Color.RED);
     int remainingBarWidth = (int) (
       barWidth * ((float) e.getLife() / e.getMaxLife())
     );

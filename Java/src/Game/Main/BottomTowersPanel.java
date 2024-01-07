@@ -16,7 +16,7 @@ public class BottomTowersPanel extends JPanel {
   public static Tower.Type selectedType;
 
   public BottomTowersPanel(Game game, PlayPage playPage) {
-    setBackground(Color.RED);
+    setBackground(Color.BLACK);
     setPreferredSize(new Dimension(500, 140));
     setLayout(new FlowLayout());
 
