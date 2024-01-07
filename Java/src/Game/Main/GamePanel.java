@@ -32,11 +32,10 @@ public class GamePanel extends JPanel implements Runnable {
   private volatile boolean isRunning = true;
 
   public GamePanel(
-    WaveManager waveManager,
-    Tile[][] map,
-    Runnable onGameOver,
-    TowerManager towerManager
-  ) {
+      WaveManager waveManager,
+      Tile[][] map,
+      Runnable onGameOver,
+      TowerManager towerManager) {
     this.map = map;
     this.onGameOver = onGameOver;
     this.waveManager = waveManager;
@@ -51,24 +50,24 @@ public class GamePanel extends JPanel implements Runnable {
     addMouseListener(towerPlacement);
 
     hpLabel = new JLabel("Vie : " + Player.getLife());
-    hpLabel.setFont(new Font("Arial", Font.BOLD, 40));
-    hpLabel.setForeground(Color.GREEN);
+    hpLabel.setFont(new Font("Arial", Font.BOLD, 20));
+    hpLabel.setForeground(Color.green);
     hpLabel.setAlignmentX(CENTER_ALIGNMENT);
 
     goldLabel = new JLabel("Argent : " + Player.getGold());
-    goldLabel.setFont(new Font("Arial", Font.BOLD, 40));
-    goldLabel.setForeground(Color.YELLOW);
+    goldLabel.setFont(new Font("Arial", Font.BOLD, 20));
+    goldLabel.setForeground(Color.ORANGE);
     goldLabel.setAlignmentX(CENTER_ALIGNMENT);
 
-    scoreLabel = new JLabel("Score : " + Player.getScore());
-    scoreLabel.setFont(new Font("Arial", Font.BOLD, 40));
-    scoreLabel.setForeground(Color.RED);
-    scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
-
     waveLabel = new JLabel("Vague : " + WaveManager.getWaveIndex());
-    waveLabel.setFont(new Font("Arial", Font.BOLD, 40));
+    waveLabel.setFont(new Font("Arial", Font.BOLD, 20));
     waveLabel.setForeground(Color.BLUE);
     waveLabel.setAlignmentX(CENTER_ALIGNMENT);
+
+    scoreLabel = new JLabel("Score : " + Player.getScore());
+    scoreLabel.setFont(new Font("Arial", Font.BOLD, 20));
+    scoreLabel.setForeground(Color.RED);
+    scoreLabel.setAlignmentX(CENTER_ALIGNMENT);
 
     add(hpLabel);
     add(Box.createRigidArea(new Dimension(10, 0)));
@@ -94,7 +93,8 @@ public class GamePanel extends JPanel implements Runnable {
           this.towerManager.addTower(tower);
         }
       }
-    } else {}
+    } else {
+    }
   };
 
   private Tower createTower(Tower.Type type, double x, double y) {
@@ -131,17 +131,15 @@ public class GamePanel extends JPanel implements Runnable {
   }
 
   private void updateLabels() {
-    if (
-      this.hpLabel != null && this.goldLabel != null && this.scoreLabel != null
-    ) {
+    if (this.hpLabel != null && this.goldLabel != null && this.scoreLabel != null) {
       this.hpLabel.setText("Vie : " + Player.getLife());
       this.hpLabel.repaint();
       this.goldLabel.setText("Argent : " + Player.getGold());
       this.goldLabel.repaint();
-      this.scoreLabel.setText("Score : " + Player.getScore());
-      this.scoreLabel.repaint();
       this.waveLabel.setText("Vague : " + WaveManager.getWaveIndex());
       this.waveLabel.repaint();
+      this.scoreLabel.setText("Score : " + Player.getScore());
+      this.scoreLabel.repaint();
     }
   }
 
@@ -157,30 +155,27 @@ public class GamePanel extends JPanel implements Runnable {
     while (isRunning) {
       long currentTime = System.currentTimeMillis();
 
-     
-        if (currentTime - lastUpdateTime >= updateInterval) {
-          if (this.waveManager.onUpdate()) {
-            Thread.currentThread().interrupt();
-            this.onGameOver.run();
-          }
-          lastUpdateTime = currentTime;
+      if (currentTime - lastUpdateTime >= updateInterval) {
+        if (this.waveManager.onUpdate()) {
+          Thread.currentThread().interrupt();
+          this.onGameOver.run();
         }
+        lastUpdateTime = currentTime;
+      }
 
-        if (currentTime - lastTowerTime >= towerInterval) {
-          this.towerManager.onUpdate(
-              this.waveManager.getCurrentWave(),
-              currentTime
-            );
-          lastTowerTime = currentTime;
-        }
+      if (currentTime - lastTowerTime >= towerInterval) {
+        this.towerManager.onUpdate(
+            this.waveManager.getCurrentWave(),
+            currentTime);
+        lastTowerTime = currentTime;
+      }
 
-        if (currentTime - lastDrawTime >= drawInterval) {
-          repaint();
-          lastDrawTime = currentTime;
-        }
+      if (currentTime - lastDrawTime >= drawInterval) {
+        repaint();
+        lastDrawTime = currentTime;
+      }
 
-        updateLabels();
-      
+      updateLabels();
 
       try {
         Thread.sleep(1000 / 60);

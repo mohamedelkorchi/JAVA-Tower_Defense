@@ -45,9 +45,9 @@ public class WaveManager {
 
     this.waves = new ArrayList<List<Enemy>>();
 
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 8; i++) {
       List<Enemy> wave = new ArrayList<>();
-      int numberOfEnemiesInWave = 6;
+      int numberOfEnemiesInWave = 5;
 
       for (int j = 0; j < numberOfEnemiesInWave; j++) {
         Enemy enemy;
