@@ -42,9 +42,9 @@ public class GraphicsRenderer {
     int barHeight = 5;
     int barX = x;
     int barY = y - barHeight - 2;
-    g.setColor(Color.BLACK);
-    g.fillRect(barX, barY, barWidth, barHeight);
     g.setColor(Color.RED);
+    g.fillRect(barX, barY, barWidth, barHeight);
+    g.setColor(Color.GREEN);
     int remainingBarWidth = (int) (
       barWidth * ((float) e.getLife() / e.getMaxLife())
     );

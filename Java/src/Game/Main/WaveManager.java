@@ -37,7 +37,7 @@ public class WaveManager {
     return routes.get((int) Math.floor(Math.random() * routes.size()));
   }
 
-public void init() {
+  public void init() {
     this.currentWave = new LinkedList<Enemy>();
     this.enemySpawned = 0;
     this.currentWaveIndex = 0;
@@ -45,31 +45,31 @@ public void init() {
 
     this.waves = new ArrayList<List<Enemy>>();
 
-    for (int i = 0; i < 5; i++) {
-        List<Enemy> wave = new ArrayList<>();
-        int numberOfEnemiesInWave = 3;
+    for (int i = 0; i < 7; i++) {
+      List<Enemy> wave = new ArrayList<>();
+      int numberOfEnemiesInWave = 6;
 
-        for (int j = 0; j < numberOfEnemiesInWave; j++) {
-            Enemy enemy;
-            if (i % 2 == 0) {
-                enemy = new Slow(getRandomRoute());
-            } else if (i % 2 == 1) {
-                enemy = new Fast(getRandomRoute());
-            } else {
-                enemy = new Air(getRandomRoute());
-            }
-            wave.add(enemy);
+      for (int j = 0; j < numberOfEnemiesInWave; j++) {
+        Enemy enemy;
+        if (i % 3 == 0) {
+          enemy = new Slow(getRandomRoute());
+        } else if (i % 3 == 1) {
+          enemy = new Fast(getRandomRoute());
+        } else {
+          enemy = new Air(getRandomRoute());
         }
+        wave.add(enemy);
+      }
 
-        waves.add(wave);
+      waves.add(wave);
     }
-}
+  }
 
   public boolean onUpdate() {
     boolean isGameOver = false;
 
     if (currentWaveIndex == 0 && enemySpawned == 0) {
-      if (System.currentTimeMillis() - waveStartTime >= 7000) {
+      if (System.currentTimeMillis() - waveStartTime >= 1000) {
         waveStartTime = System.currentTimeMillis();
       } else {
         return false;
@@ -81,7 +81,7 @@ public void init() {
         waveStartTime = System.currentTimeMillis();
         wavePlaying = false;
       }
-      if (System.currentTimeMillis() - waveStartTime >= 5000) {
+      if (System.currentTimeMillis() - waveStartTime >= 3000) {
         currentWaveIndex++;
         waveIndex++;
         enemySpawned = 0;
