@@ -73,9 +73,9 @@ public class GamePanel extends JPanel implements Runnable {
     add(Box.createRigidArea(new Dimension(10, 0)));
     add(goldLabel);
     add(Box.createRigidArea(new Dimension(10, 0)));
-    add(scoreLabel);
-    add(Box.createRigidArea(new Dimension(10, 0)));
     add(waveLabel);
+    add(Box.createRigidArea(new Dimension(10, 0)));
+    add(scoreLabel);
   }
 
   private Consumer<MouseEvent> onMouseClick = (MouseEvent e) -> {
